@@ -22,26 +22,27 @@
 <script>
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    var x = 10;
-    var y = 10;
-    var size = 50;
-    var rowCount = 8;
-    var collumCount = 10;
+   
+    var size = 200;
+    var x = (canvas.width/2)-(size/2);
+    var y = (canvas.height/2)-(size/2);
+    var rowCount = 16;
+    var check = false;
 	function draw() {
 	
 		for (var i = 0; i < rowCount; i++) {
-			for (r = 0; r < collumCount; r++) {
-				ctx.fillStyle = "red";
-				ctx.fillRect(x,y,size,size);
-				x += 70;
-				size -= 5;
-                y += 2;
-			}
-            console.log(y); 
-			y += 60; 
-            size = 50;
-            x = 10;
-		}
+            if (check == false) {
+                ctx.fillStyle = "red";
+                check = true;  
+            } else {
+                ctx.fillStyle = "blue";
+                check = false;
+            }
+            ctx.fillRect(x,y,size,size);
+            size -= 10; 
+            x += 5;
+            y += 5;
+        }
 	}
 
 draw();
